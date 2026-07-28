@@ -78,7 +78,46 @@ class TestDataOps(unittest.TestCase):
         true = [True, False]
         test = [0.7, 0.65]
         ans = score_array(true, test, task_type=CLF_KEY)
-        self.assertDictEqual(ans, true_ans)
+        true_ans["rocauc"] = 1.0
+        for metric, expected in true_ans.items():
+            self.assertAlmostEqual(ans[metric], expected)
+
+        # Reproduction from #181: thresholded labels have no ranking information,
+        # while the original scores perfectly rank the positive samples.
+        true = 8 * [True] + 2 * [False]
+        test = 8 * [0.4] + 2 * [0.2]
+        ans = score_array(true, test, task_type=CLF_KEY)
+        true_ans = {
+            "accuracy": 0.2,
+            "balanced_accuracy": 0.5,
+            "f1": 0.0,
+            "rocauc": 1.0,
+        }
+        for metric, expected in true_ans.items():
+            self.assertAlmostEqual(ans[metric], expected)
+
+    def test_score_array_numpy_types(self):
+        true = np.array([True, False], dtype=bool)
+        test = np.array([0.7, 0.65], dtype=np.float32)
+        ans = score_array(true, test, task_type=CLF_KEY)
+        self.assertAlmostEqual(ans["accuracy"], 0.5)
+        self.assertAlmostEqual(ans["balanced_accuracy"], 0.5)
+        self.assertAlmostEqual(ans["f1"], 2 / 3)
+        self.assertAlmostEqual(ans["rocauc"], 1.0)
+
+        bool_ans = score_array(true, np.array([True, True]), task_type=CLF_KEY)
+        self.assertAlmostEqual(bool_ans["accuracy"], 0.5)
+        self.assertAlmostEqual(bool_ans["balanced_accuracy"], 0.5)
+        self.assertAlmostEqual(bool_ans["f1"], 2 / 3)
+        self.assertAlmostEqual(bool_ans["rocauc"], 0.5)
+
+    def test_score_array_rejects_non_1d_classification_arrays(self):
+        with self.assertRaisesRegex(ValueError, "must both be one-dimensional"):
+            score_array(
+                np.array([[True, False]]),
+                np.array([[0.7, 0.65]]),
+                task_type=CLF_KEY,
+            )
 
     def test_mean_absolute_percentage_error(self):
 

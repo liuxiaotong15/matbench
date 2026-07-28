@@ -100,6 +100,15 @@ def score_array(true_array, pred_array, task_type):
         metrics = REG_METRICS
     elif task_type == CLF_KEY:
         metrics = CLF_METRICS
+        true_labels = np.asarray(true_array)
+        pred_scores = np.asarray(pred_array)
+        if true_labels.ndim != 1 or pred_scores.ndim != 1:
+            raise ValueError(
+                "Classification true and predicted arrays must both be "
+                "one-dimensional; "
+                f"got shapes {true_labels.shape} and {pred_scores.shape}."
+            )
+        pred_labels = pred_scores > CLF_THRESH
     else:
         raise ValueError(
             f"'task_type' must be one of {[REG_KEY, CLF_KEY]}, not '{task_type}'"
@@ -108,18 +117,11 @@ def score_array(true_array, pred_array, task_type):
     for metric in metrics:
         mfunc = METRIC_MAP[metric]
 
-        if metric == "rocauc":
-            # Both arrays must be in probability form
-            # if pred. array is given in probabilities
-            if isinstance(pred_array[0], float):
-                true_array = homogenize_clf_array(true_array, to_probs=True)
-
-        # Other clf metrics always be converted to labels
-        elif metric in CLF_METRICS:
-            if isinstance(pred_array[0], float):
-                pred_array = homogenize_clf_array(pred_array, to_labels=True)
-
-        computed[metric] = mfunc(true_array, pred_array)
+        if task_type == CLF_KEY:
+            predictions = pred_scores if metric == "rocauc" else pred_labels
+            computed[metric] = mfunc(true_labels, predictions)
+        else:
+            computed[metric] = mfunc(true_array, pred_array)
     return computed
 
 
