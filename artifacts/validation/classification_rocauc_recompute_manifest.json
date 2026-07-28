@@ -1,0 +1,1603 @@
+{
+  "audit": {
+    "continuous_probability_records_recomputed": 11,
+    "hard_label_records_unchanged": 16,
+    "submission_task_records": 27,
+    "tasks": [
+      "matbench_glass",
+      "matbench_expt_is_metal",
+      "matbench_mp_is_metal"
+    ]
+  },
+  "benchmark": "matbench_v0.1",
+  "canonical_artifacts": {
+    "classification_targets": {
+      "path": "artifacts/validation/matbench_v0.1_classification_targets.json.gz",
+      "sha256": "10a244acc2ddbb4cf39c43f2a82847a3ae72ded5521785a55b1abb6b5903bb1f",
+      "sources": {
+        "matbench_expt_is_metal": {
+          "n_samples": 4921,
+          "source_artifact_sha256": "8f2a4f9bacdcbc5c2c73615629ee7986f09d39bed40ba7db52b61b2889730887",
+          "target": "is_metal"
+        },
+        "matbench_glass": {
+          "n_samples": 5680,
+          "source_artifact_sha256": "36beb654e2a463ee2a6572105bea0ca2961eee7c7b26a25377bff2c3b338e53a",
+          "target": "gfa"
+        },
+        "matbench_mp_is_metal": {
+          "n_samples": 106113,
+          "source_artifact_sha256": "9a028ed5750a4c76ca36e9f3c8d48fe0bf3fb21b76ec2289e58ae7048d527919",
+          "target": "is_metal"
+        }
+      }
+    },
+    "validation_splits": {
+      "path": "matbench/matbench_v0.1_validation.json",
+      "sha256": "94c17bc3dac32c67d33d69289927a5fec174497e74bbc47293e23d3d147e9a6d"
+    }
+  },
+  "files": [
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_DimeNetPP_kgcnn_v2.1.0/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_DimeNetPP_kgcnn_v2.1.0/results.json.gz",
+      "sha256_after": "5da33ad20edb5baa6550a91cdba96407da748a063277f45cbfe7196fe5ed6656",
+      "sha256_before": "beef276a9e0cb5d68a8f226e2ff9bfe8e6e282f5cfe2581f993ab1f50c96d3db"
+    },
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_MegNet_kgcnn_v2.1.0/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_MegNet_kgcnn_v2.1.0/results.json.gz",
+      "sha256_after": "a4613fc95415d64ee98d70a5b484199c8aa019b305c90ab54edc3af0b2d9b35c",
+      "sha256_before": "3e7e2c07bc778e7b4f815c6b300bbabbba4adf6c12ad41435f85a62220fdddc6"
+    },
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_SchNet_kgcnn_v2.1.0/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_SchNet_kgcnn_v2.1.0/results.json.gz",
+      "sha256_after": "1d864a5ff4a01381cf64f964c453bf062538a1cbc609f9caff2fa0ef1e11d4cc",
+      "sha256_before": "9eb9f01284e552225a25579e62a370cd3b3e43ae2332a4dc5d5f3192d8a2c51e"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_alignn/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_alignn/results.json.gz",
+      "sha256_after": "a769e653c5274da1d8455fca0a3a871a93acce4d8200495c69012dbea6c553db",
+      "sha256_before": "a769e653c5274da1d8455fca0a3a871a93acce4d8200495c69012dbea6c553db"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz::matbench_glass",
+        "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz",
+      "sha256_after": "5183c48af21875f9cba5e8b46e153ef74d22ae0a012bfadfe1203173da2f7f76",
+      "sha256_before": "5183c48af21875f9cba5e8b46e153ef74d22ae0a012bfadfe1203173da2f7f76"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_cgcnnv2019/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_cgcnnv2019/results.json.gz",
+      "sha256_after": "1791ba153f67132fac1de362d438f90ac5f1b949a00e8f4885556bb325a67e14",
+      "sha256_before": "1791ba153f67132fac1de362d438f90ac5f1b949a00e8f4885556bb325a67e14"
+    },
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_coGN/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_coGN/results.json.gz",
+      "sha256_after": "0072bb64bfe10e8822094497993d7b0cbaa94fdaf4ef44c82660b1dd3340cf3f",
+      "sha256_before": "e13445bfadad3043f43439498eaa31f7ae559796c3ad753a2f180371b3968510"
+    },
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_coNGN/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_coNGN/results.json.gz",
+      "sha256_after": "4ef5e412216b11eed9e76c03a16c3ebc80efa9682a6422bca72ca2791eca3867",
+      "sha256_before": "d45202a32f723d61b744f9a6525cdcd165c5d0ce2191a7cf25045d09f16eb1a3"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_darwin/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_darwin/results.json.gz::matbench_glass"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_darwin/results.json.gz",
+      "sha256_after": "b04d14ce8a82c06a75f3e0919d2b01a63d19083aff6a375a25ed3b84c3b3f60e",
+      "sha256_before": "b04d14ce8a82c06a75f3e0919d2b01a63d19083aff6a375a25ed3b84c3b3f60e"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_dummy/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_dummy/results.json.gz::matbench_glass",
+        "benchmarks/matbench_v0.1_dummy/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_dummy/results.json.gz",
+      "sha256_after": "2f3539f6308ebd8f43641850092db4e37127210f594e3170dd14254a2cf169e3",
+      "sha256_before": "2f3539f6308ebd8f43641850092db4e37127210f594e3170dd14254a2cf169e3"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_gptchem/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_gptchem/results.json.gz::matbench_glass"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_gptchem/results.json.gz",
+      "sha256_after": "487e330c4f54241a090b994ba27031f203390ba89fb5e39b8dad4b95b7b5d589",
+      "sha256_before": "487e330c4f54241a090b994ba27031f203390ba89fb5e39b8dad4b95b7b5d589"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_matformer/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_matformer/results.json.gz",
+      "sha256_after": "a56f5dbf2ae046e337b6aad45ad492df4b75250af10b9955da62efdef3d84d29",
+      "sha256_before": "a56f5dbf2ae046e337b6aad45ad492df4b75250af10b9955da62efdef3d84d29"
+    },
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz::matbench_glass",
+        "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz",
+      "sha256_after": "ff87b8763a0f2cfa584f7cad799c8d50f6a6f00541219e853718a3695dfb6a03",
+      "sha256_before": "d65ef617c20fc849ed5efbf60c98d5e0b247a9a03c08e43602e60a711f82a36b"
+    },
+    {
+      "changed": true,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz::matbench_glass",
+        "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz",
+      "sha256_after": "957d850e785c55f503e9e676c1864efe906f1f6eb1c777d1127fb36abba73f76",
+      "sha256_before": "0f8f461168870e97017f9aae67f2fb10ae2afac0f1f646c1af2533725de3496b"
+    },
+    {
+      "changed": false,
+      "prediction_records": [
+        "benchmarks/matbench_v0.1_rf/results.json.gz::matbench_expt_is_metal",
+        "benchmarks/matbench_v0.1_rf/results.json.gz::matbench_glass",
+        "benchmarks/matbench_v0.1_rf/results.json.gz::matbench_mp_is_metal"
+      ],
+      "results_file": "benchmarks/matbench_v0.1_rf/results.json.gz",
+      "sha256_after": "7e11700d423dce8a842d469fb6e63cb1f27662e7175abfd4551835669774ad00",
+      "sha256_before": "7e11700d423dce8a842d469fb6e63cb1f27662e7175abfd4551835669774ad00"
+    }
+  ],
+  "independent_checks": {
+    "expected_means": [
+      {
+        "algorithm": "MODNet (v0.1.12)",
+        "expected_rounded_mean": 0.989876,
+        "observed_mean": 0.9898761972557748,
+        "task": "matbench_glass"
+      },
+      {
+        "algorithm": "MODNet (v0.1.10)",
+        "expected_rounded_mean": 0.932948,
+        "observed_mean": 0.9329484035961929,
+        "task": "matbench_glass"
+      },
+      {
+        "algorithm": "MODNet (v0.1.10)",
+        "expected_rounded_mean": 0.972546,
+        "observed_mean": 0.9725462640509421,
+        "task": "matbench_expt_is_metal"
+      },
+      {
+        "algorithm": "MODNet (v0.1.12)",
+        "expected_rounded_mean": 0.972546,
+        "observed_mean": 0.9725462640509421,
+        "task": "matbench_expt_is_metal"
+      }
+    ],
+    "matbench_mp_is_metal_top_four": [
+      {
+        "algorithm": "MODNet (v0.1.12)",
+        "rounded_mean": 0.964159
+      },
+      {
+        "algorithm": "coNGN",
+        "rounded_mean": 0.954047
+      },
+      {
+        "algorithm": "MegNet (kgcnn v2.1.0)",
+        "rounded_mean": 0.953543
+      },
+      {
+        "algorithm": "CGCNN v2019",
+        "rounded_mean": 0.951962
+      }
+    ]
+  },
+  "records": [
+    {
+      "algorithm": "AMMExpress v2020",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9217864887818795,
+          "old_rocauc": 0.9217864887818795
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9156118317772453,
+          "old_rocauc": 0.9156118317772453
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9206725605221846,
+          "old_rocauc": 0.9206725605221846
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9227546889201026,
+          "old_rocauc": 0.9227546889201026
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9237833594976452,
+          "old_rocauc": 0.9237833594976452
+        }
+      ],
+      "new_mean_rocauc": 0.9209217858998114,
+      "new_rank": {
+        "rank": 4,
+        "tie": false,
+        "tie_group": [
+          "AMMExpress v2020"
+        ]
+      },
+      "old_mean_rocauc": 0.9209217858998114,
+      "old_rank": {
+        "rank": 2,
+        "tie": false,
+        "tie_group": [
+          "AMMExpress v2020"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "Darwin",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9634267008583656,
+          "old_rocauc": 0.9634267008583656
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9634222919937206,
+          "old_rocauc": 0.9634222919937206
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9543295050813847,
+          "old_rocauc": 0.9543295050813847
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.962434933487565,
+          "old_rocauc": 0.962434933487565
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9553499132446501,
+          "old_rocauc": 0.9553499132446501
+        }
+      ],
+      "new_mean_rocauc": 0.9597926689331372,
+      "new_rank": {
+        "rank": 3,
+        "tie": false,
+        "tie_group": [
+          "Darwin"
+        ]
+      },
+      "old_mean_rocauc": 0.9597926689331372,
+      "old_rank": {
+        "rank": 1,
+        "tie": false,
+        "tie_group": [
+          "Darwin"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_darwin/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_darwin/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "Dummy",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.4699654509923564,
+          "old_rocauc": 0.4699654509923564
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.5000743617284971,
+          "old_rocauc": 0.5000743617284971
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.4878129389407585,
+          "old_rocauc": 0.4878129389407585
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.5071676443856895,
+          "old_rocauc": 0.5071676443856895
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.49693877551020404,
+          "old_rocauc": 0.49693877551020404
+        }
+      ],
+      "new_mean_rocauc": 0.4923918343115011,
+      "new_rank": {
+        "rank": 7,
+        "tie": false,
+        "tie_group": [
+          "Dummy"
+        ]
+      },
+      "old_mean_rocauc": 0.4923918343115011,
+      "old_rank": {
+        "rank": 7,
+        "tie": false,
+        "tie_group": [
+          "Dummy"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_dummy/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_dummy/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "gptchem",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9025062460318114,
+          "old_rocauc": 0.9025062460318114
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.8850822110220607,
+          "old_rocauc": 0.8850822110220607
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.899277038750723,
+          "old_rocauc": 0.899277038750723
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.8974097331240188,
+          "old_rocauc": 0.8974097331240188
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.898388829215897,
+          "old_rocauc": 0.898388829215897
+        }
+      ],
+      "new_mean_rocauc": 0.8965328116289022,
+      "new_rank": {
+        "rank": 6,
+        "tie": false,
+        "tie_group": [
+          "gptchem"
+        ]
+      },
+      "old_mean_rocauc": 0.8965328116289022,
+      "old_rank": {
+        "rank": 6,
+        "tie": false,
+        "tie_group": [
+          "gptchem"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_gptchem/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_gptchem/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "MODNet (v0.1.10)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9762279739769288,
+          "old_rocauc": 0.926853401716731
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9713211600429646,
+          "old_rocauc": 0.9135627530364372
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9746343881682227,
+          "old_rocauc": 0.9176774353466084
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.975113608196315,
+          "old_rocauc": 0.9176609105180534
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9654341898702801,
+          "old_rocauc": 0.9045030157812113
+        }
+      ],
+      "new_mean_rocauc": 0.9725462640509421,
+      "new_rank": {
+        "rank": 1,
+        "tie": true,
+        "tie_group": [
+          "MODNet (v0.1.10)",
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "old_mean_rocauc": 0.9160515032798082,
+      "old_rank": {
+        "rank": 4,
+        "tie": true,
+        "tie_group": [
+          "MODNet (v0.1.10)",
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "MODNet (v0.1.12)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9762279739769288,
+          "old_rocauc": 0.926853401716731
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9713211600429646,
+          "old_rocauc": 0.9135627530364372
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9746343881682227,
+          "old_rocauc": 0.9176774353466084
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.975113608196315,
+          "old_rocauc": 0.9176609105180534
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9654341898702801,
+          "old_rocauc": 0.9045030157812113
+        }
+      ],
+      "new_mean_rocauc": 0.9725462640509421,
+      "new_rank": {
+        "rank": 1,
+        "tie": true,
+        "tie_group": [
+          "MODNet (v0.1.10)",
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "old_mean_rocauc": 0.9160515032798082,
+      "old_rank": {
+        "rank": 4,
+        "tie": true,
+        "tie_group": [
+          "MODNet (v0.1.10)",
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "RF-SCM/Magpie",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9248291102187554,
+          "old_rocauc": 0.9248291102187554
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9166322399405106,
+          "old_rocauc": 0.9166322399405106
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.909481120383376,
+          "old_rocauc": 0.909481120383376
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.922746426505825,
+          "old_rocauc": 0.922746426505825
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9096050565975377,
+          "old_rocauc": 0.9096050565975377
+        }
+      ],
+      "new_mean_rocauc": 0.9166587907292009,
+      "new_rank": {
+        "rank": 5,
+        "tie": false,
+        "tie_group": [
+          "RF-SCM/Magpie"
+        ]
+      },
+      "old_mean_rocauc": 0.9166587907292009,
+      "old_rank": {
+        "rank": 3,
+        "tie": false,
+        "tie_group": [
+          "RF-SCM/Magpie"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_rf/results.json.gz::matbench_expt_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_rf/results.json.gz",
+      "task": "matbench_expt_is_metal"
+    },
+    {
+      "algorithm": "AMMExpress v2020",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.8440752081897379,
+          "old_rocauc": 0.8440752081897379
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.8383238607473361,
+          "old_rocauc": 0.8383238607473361
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.8546193451674745,
+          "old_rocauc": 0.8546193451674745
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.8742462420386963,
+          "old_rocauc": 0.8742462420386963
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.89209726443769,
+          "old_rocauc": 0.89209726443769
+        }
+      ],
+      "new_mean_rocauc": 0.860672384116187,
+      "new_rank": {
+        "rank": 3,
+        "tie": false,
+        "tie_group": [
+          "AMMExpress v2020"
+        ]
+      },
+      "old_mean_rocauc": 0.860672384116187,
+      "old_rank": {
+        "rank": 2,
+        "tie": false,
+        "tie_group": [
+          "AMMExpress v2020"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "Darwin",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.7606863199285883,
+          "old_rocauc": 0.7606863199285883
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.7450330128096481,
+          "old_rocauc": 0.7450330128096481
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.7694075019867949,
+          "old_rocauc": 0.7694075019867949
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.7840438714440139,
+          "old_rocauc": 0.7840438714440139
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.7748669506559247,
+          "old_rocauc": 0.7748669506559247
+        }
+      ],
+      "new_mean_rocauc": 0.766807531364994,
+      "new_rank": {
+        "rank": 6,
+        "tie": false,
+        "tie_group": [
+          "Darwin"
+        ]
+      },
+      "old_mean_rocauc": 0.766807531364994,
+      "old_rank": {
+        "rank": 6,
+        "tie": false,
+        "tie_group": [
+          "Darwin"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_darwin/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_darwin/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "Dummy",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.5212445810405155,
+          "old_rocauc": 0.5212445810405155
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.5217474002176999,
+          "old_rocauc": 0.5217474002176999
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.48475911759942447,
+          "old_rocauc": 0.48475911759942447
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.47986086786213344,
+          "old_rocauc": 0.47986086786213344
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.49505843625119117,
+          "old_rocauc": 0.49505843625119117
+        }
+      ],
+      "new_mean_rocauc": 0.5005340805941929,
+      "new_rank": {
+        "rank": 7,
+        "tie": false,
+        "tie_group": [
+          "Dummy"
+        ]
+      },
+      "old_mean_rocauc": 0.5005340805941929,
+      "old_rank": {
+        "rank": 7,
+        "tie": false,
+        "tie_group": [
+          "Dummy"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_dummy/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_dummy/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "gptchem",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.7839384112420575,
+          "old_rocauc": 0.7839384112420575
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.768448944079728,
+          "old_rocauc": 0.768448944079728
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.7673849259707047,
+          "old_rocauc": 0.7673849259707047
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.7965409053758338,
+          "old_rocauc": 0.7965409053758338
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.7645676320041581,
+          "old_rocauc": 0.7645676320041581
+        }
+      ],
+      "new_mean_rocauc": 0.7761761637344964,
+      "new_rank": {
+        "rank": 5,
+        "tie": false,
+        "tie_group": [
+          "gptchem"
+        ]
+      },
+      "old_mean_rocauc": 0.7761761637344964,
+      "old_rank": {
+        "rank": 5,
+        "tie": false,
+        "tie_group": [
+          "gptchem"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_gptchem/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_gptchem/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "MODNet (v0.1.10)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9459855444194605,
+          "old_rocauc": 0.8262223025728523
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.922528182355755,
+          "old_rocauc": 0.7783264219236694
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9197184212607767,
+          "old_rocauc": 0.8062903244031142
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9355864152194138,
+          "old_rocauc": 0.840239093343578
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9409234547255586,
+          "old_rocauc": 0.802303552125588
+        }
+      ],
+      "new_mean_rocauc": 0.9329484035961929,
+      "new_rank": {
+        "rank": 2,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.10)"
+        ]
+      },
+      "old_mean_rocauc": 0.8106763388737604,
+      "old_rank": {
+        "rank": 4,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.10)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "MODNet (v0.1.12)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9951940279394207,
+          "old_rocauc": 0.9743279736952125
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9921733464405299,
+          "old_rocauc": 0.9618309397633925
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9865707732116021,
+          "old_rocauc": 0.9538931763482899
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9878419452887537,
+          "old_rocauc": 0.9544543752801287
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9876008933985679,
+          "old_rocauc": 0.9570494495354102
+        }
+      ],
+      "new_mean_rocauc": 0.9898761972557748,
+      "new_rank": {
+        "rank": 1,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "old_mean_rocauc": 0.9603111829244867,
+      "old_rank": {
+        "rank": 1,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "RF-SCM/Magpie",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.8860069377747144,
+          "old_rocauc": 0.8860069377747144
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.840239093343578,
+          "old_rocauc": 0.840239093343578
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.8495214743336233,
+          "old_rocauc": 0.8495214743336233
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.8526193677660893,
+          "old_rocauc": 0.8526193677660893
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.8651164016979092,
+          "old_rocauc": 0.8651164016979092
+        }
+      ],
+      "new_mean_rocauc": 0.8587006549831828,
+      "new_rank": {
+        "rank": 4,
+        "tie": false,
+        "tie_group": [
+          "RF-SCM/Magpie"
+        ]
+      },
+      "old_mean_rocauc": 0.8587006549831828,
+      "old_rank": {
+        "rank": 3,
+        "tie": false,
+        "tie_group": [
+          "RF-SCM/Magpie"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_rf/results.json.gz::matbench_glass",
+      "results_file": "benchmarks/matbench_v0.1_rf/results.json.gz",
+      "task": "matbench_glass"
+    },
+    {
+      "algorithm": "ALIGNN",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9156375843655277,
+          "old_rocauc": 0.9156375843655277
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9117114859074077,
+          "old_rocauc": 0.9117114859074077
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9124733355982312,
+          "old_rocauc": 0.9124733355982312
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9116958976623635,
+          "old_rocauc": 0.9116958976623635
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9123307918532905,
+          "old_rocauc": 0.9123307918532905
+        }
+      ],
+      "new_mean_rocauc": 0.9127698190773641,
+      "new_rank": {
+        "rank": 8,
+        "tie": false,
+        "tie_group": [
+          "ALIGNN"
+        ]
+      },
+      "old_mean_rocauc": 0.9127698190773641,
+      "old_rank": {
+        "rank": 2,
+        "tie": false,
+        "tie_group": [
+          "ALIGNN"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_alignn/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_alignn/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "AMMExpress v2020",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9094273392957014,
+          "old_rocauc": 0.9094273392957014
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9085725385673242,
+          "old_rocauc": 0.9085725385673242
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9088690432700268,
+          "old_rocauc": 0.9088690432700268
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9108250570803071,
+          "old_rocauc": 0.9108250570803071
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9086460493344426,
+          "old_rocauc": 0.9086460493344426
+        }
+      ],
+      "new_mean_rocauc": 0.9092680055095604,
+      "new_rank": {
+        "rank": 9,
+        "tie": false,
+        "tie_group": [
+          "AMMExpress v2020"
+        ]
+      },
+      "old_mean_rocauc": 0.9092680055095604,
+      "old_rank": {
+        "rank": 4,
+        "tie": false,
+        "tie_group": [
+          "AMMExpress v2020"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_automatminer_expressv2020/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "CGCNN v2019",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9577715386340839,
+          "old_rocauc": 0.9577715386340839
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9432052816291626,
+          "old_rocauc": 0.9432052816291626
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9631621221644242,
+          "old_rocauc": 0.9631621221644242
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9463086080500037,
+          "old_rocauc": 0.9463086080500037
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9493638319370733,
+          "old_rocauc": 0.9493638319370733
+        }
+      ],
+      "new_mean_rocauc": 0.9519622764829496,
+      "new_rank": {
+        "rank": 4,
+        "tie": false,
+        "tie_group": [
+          "CGCNN v2019"
+        ]
+      },
+      "old_mean_rocauc": 0.9519622764829496,
+      "old_rank": {
+        "rank": 1,
+        "tie": false,
+        "tie_group": [
+          "CGCNN v2019"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_cgcnnv2019/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_cgcnnv2019/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "coGN",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9533852945456898,
+          "old_rocauc": 0.9162013612310322
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9497546239278799,
+          "old_rocauc": 0.9092408635987461
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9510363551507165,
+          "old_rocauc": 0.9116565739959237
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9529485664693761,
+          "old_rocauc": 0.9134595418252833
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9488960814974519,
+          "old_rocauc": 0.9113136999241821
+        }
+      ],
+      "new_mean_rocauc": 0.9512041843182228,
+      "new_rank": {
+        "rank": 5,
+        "tie": false,
+        "tie_group": [
+          "coGN"
+        ]
+      },
+      "old_mean_rocauc": 0.9123744081150335,
+      "old_rank": {
+        "rank": 3,
+        "tie": false,
+        "tie_group": [
+          "coGN"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_coGN/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_coGN/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "coNGN",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9572522984019478,
+          "old_rocauc": 0.9096081236987377
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9550598719603408,
+          "old_rocauc": 0.9122534687307213
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9492075170324434,
+          "old_rocauc": 0.9071978907109489
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9568839907356078,
+          "old_rocauc": 0.9084617354147979
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9518314213809568,
+          "old_rocauc": 0.9069029316763723
+        }
+      ],
+      "new_mean_rocauc": 0.9540470199022593,
+      "new_rank": {
+        "rank": 2,
+        "tie": false,
+        "tie_group": [
+          "coNGN"
+        ]
+      },
+      "old_mean_rocauc": 0.9088848300463155,
+      "old_rank": {
+        "rank": 5,
+        "tie": false,
+        "tie_group": [
+          "coNGN"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_coNGN/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_coNGN/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "DimeNet++ (kgcnn v2.1.0)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9521445744036856,
+          "old_rocauc": 0.9089487556798888
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9505306408875744,
+          "old_rocauc": 0.9038476218386331
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9497979650102921,
+          "old_rocauc": 0.8998490688444374
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9530703883846002,
+          "old_rocauc": 0.9042975020544575
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9456011076723594,
+          "old_rocauc": 0.8988968087789837
+        }
+      ],
+      "new_mean_rocauc": 0.9502289352717023,
+      "new_rank": {
+        "rank": 6,
+        "tie": false,
+        "tie_group": [
+          "DimeNet++ (kgcnn v2.1.0)"
+        ]
+      },
+      "old_mean_rocauc": 0.9031679514392801,
+      "old_rank": {
+        "rank": 7,
+        "tie": false,
+        "tie_group": [
+          "DimeNet++ (kgcnn v2.1.0)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_DimeNetPP_kgcnn_v2.1.0/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_DimeNetPP_kgcnn_v2.1.0/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "Dummy",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.5068860952565414,
+          "old_rocauc": 0.5068860952565414
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.49441922107144665,
+          "old_rocauc": 0.49441922107144665
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.498590270052566,
+          "old_rocauc": 0.498590270052566
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.5032373424102887,
+          "old_rocauc": 0.5032373424102887
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.5029500616879292,
+          "old_rocauc": 0.5029500616879292
+        }
+      ],
+      "new_mean_rocauc": 0.5012165980957544,
+      "new_rank": {
+        "rank": 13,
+        "tie": false,
+        "tie_group": [
+          "Dummy"
+        ]
+      },
+      "old_mean_rocauc": 0.5012165980957544,
+      "old_rank": {
+        "rank": 13,
+        "tie": false,
+        "tie_group": [
+          "Dummy"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_dummy/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_dummy/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "Matformer",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.850261456235892,
+          "old_rocauc": 0.850261456235892
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.8403106895418139,
+          "old_rocauc": 0.8403106895418139
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.855316202568585,
+          "old_rocauc": 0.855316202568585
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.7518264975494677,
+          "old_rocauc": 0.7518264975494677
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.760906566819194,
+          "old_rocauc": 0.760906566819194
+        }
+      ],
+      "new_mean_rocauc": 0.8117242825429904,
+      "new_rank": {
+        "rank": 12,
+        "tie": false,
+        "tie_group": [
+          "Matformer"
+        ]
+      },
+      "old_mean_rocauc": 0.8117242825429904,
+      "old_rank": {
+        "rank": 11,
+        "tie": false,
+        "tie_group": [
+          "Matformer"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_matformer/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_matformer/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "MegNet (kgcnn v2.1.0)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9512493880729811,
+          "old_rocauc": 0.9048312039010837
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.955004092763032,
+          "old_rocauc": 0.901338745904414
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9554848621140487,
+          "old_rocauc": 0.9034889579728487
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9529461542436742,
+          "old_rocauc": 0.9007973806300625
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9530314675294544,
+          "old_rocauc": 0.9001729123135177
+        }
+      ],
+      "new_mean_rocauc": 0.9535431929446381,
+      "new_rank": {
+        "rank": 3,
+        "tie": false,
+        "tie_group": [
+          "MegNet (kgcnn v2.1.0)"
+        ]
+      },
+      "old_mean_rocauc": 0.9021258401443853,
+      "old_rank": {
+        "rank": 8,
+        "tie": false,
+        "tie_group": [
+          "MegNet (kgcnn v2.1.0)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_MegNet_kgcnn_v2.1.0/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_MegNet_kgcnn_v2.1.0/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "MODNet (v0.1.10)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9193361394724748,
+          "old_rocauc": 0.8414955085302108
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9506220584253781,
+          "old_rocauc": 0.8708541069325471
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.5,
+          "old_rocauc": 0.5
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.8747345603099791,
+          "old_rocauc": 0.8447204239446015
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.8707333735310719,
+          "old_rocauc": 0.8452515562921327
+        }
+      ],
+      "new_mean_rocauc": 0.8230852263477807,
+      "new_rank": {
+        "rank": 11,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.10)"
+        ]
+      },
+      "old_mean_rocauc": 0.7804643191398984,
+      "old_rank": {
+        "rank": 12,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.10)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.10/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "MODNet (v0.1.12)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9698007342491859,
+          "old_rocauc": 0.9134944282684221
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9637479528280266,
+          "old_rocauc": 0.8995189908089216
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9666553692784321,
+          "old_rocauc": 0.9096219510511793
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.952159587973781,
+          "old_rocauc": 0.8848541497871097
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.968430583371941,
+          "old_rocauc": 0.9115556542931836
+        }
+      ],
+      "new_mean_rocauc": 0.9641588455402733,
+      "new_rank": {
+        "rank": 1,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "old_mean_rocauc": 0.9038090348417633,
+      "old_rank": {
+        "rank": 6,
+        "tie": false,
+        "tie_group": [
+          "MODNet (v0.1.12)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_modnet_v0.1.12/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "RF-SCM/Magpie",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9025154931926253,
+          "old_rocauc": 0.9025154931926253
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.8967770563887079,
+          "old_rocauc": 0.8967770563887079
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.8987338153576403,
+          "old_rocauc": 0.8987338153576403
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.8993666687867751,
+          "old_rocauc": 0.8993666687867751
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.8983718470312818,
+          "old_rocauc": 0.8983718470312818
+        }
+      ],
+      "new_mean_rocauc": 0.8991529761514061,
+      "new_rank": {
+        "rank": 10,
+        "tie": false,
+        "tie_group": [
+          "RF-SCM/Magpie"
+        ]
+      },
+      "old_mean_rocauc": 0.8991529761514061,
+      "old_rank": {
+        "rank": 9,
+        "tie": false,
+        "tie_group": [
+          "RF-SCM/Magpie"
+        ]
+      },
+      "prediction_kind": "hard_boolean_label",
+      "record_id": "benchmarks/matbench_v0.1_rf/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_rf/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    },
+    {
+      "algorithm": "SchNet (kgcnn v2.1.0)",
+      "folds": [
+        {
+          "fold": "fold_0",
+          "new_rocauc": 0.9369336970582063,
+          "old_rocauc": 0.8901855443121884
+        },
+        {
+          "fold": "fold_1",
+          "new_rocauc": 0.9364398824558096,
+          "old_rocauc": 0.8889833804280377
+        },
+        {
+          "fold": "fold_2",
+          "new_rocauc": 0.9363016240776992,
+          "old_rocauc": 0.8887963459408068
+        },
+        {
+          "fold": "fold_3",
+          "new_rocauc": 0.9395040129678363,
+          "old_rocauc": 0.8929302362644075
+        },
+        {
+          "fold": "fold_4",
+          "new_rocauc": 0.9361015912016463,
+          "old_rocauc": 0.8927568270504641
+        }
+      ],
+      "new_mean_rocauc": 0.9370561615522395,
+      "new_rank": {
+        "rank": 7,
+        "tie": false,
+        "tie_group": [
+          "SchNet (kgcnn v2.1.0)"
+        ]
+      },
+      "old_mean_rocauc": 0.8907304667991809,
+      "old_rank": {
+        "rank": 10,
+        "tie": false,
+        "tie_group": [
+          "SchNet (kgcnn v2.1.0)"
+        ]
+      },
+      "prediction_kind": "continuous_positive_class_probability",
+      "record_id": "benchmarks/matbench_v0.1_SchNet_kgcnn_v2.1.0/results.json.gz::matbench_mp_is_metal",
+      "results_file": "benchmarks/matbench_v0.1_SchNet_kgcnn_v2.1.0/results.json.gz",
+      "task": "matbench_mp_is_metal"
+    }
+  ],
+  "schema_version": 1,
+  "scorer": {
+    "classification_threshold": 0.5,
+    "implementation": "matbench.data_ops.score_array",
+    "matbench_version": "0.6",
+    "rocauc_basis": "positive-class scores before thresholding",
+    "version": "probability-rocauc-v1"
+  },
+  "script": {
+    "path": "scripts/recompute_classification_rocauc.py",
+    "version": "1.0.0"
+  }
+}

@@ -59,6 +59,39 @@ a MAPE of 11% corresponds to `mape*=0.11`, and a MAPE of 11,000% corresponds to 
 **Please use the given MAPE scores with a grain of salt, as they are not complete for the reason given above**.
 
 
+---
+
+## Classification metrics and historical ROC-AUC migration
+
+Classification predictions should be a one-dimensional array of
+positive/True-class probabilities. For classifiers with a two-column
+`predict_proba` result, record `predict_proba(inputs)[:, 1]`. ROC-AUC uses these
+original, unthresholded probabilities. Accuracy, balanced accuracy, and F1 use
+boolean labels produced with the strict threshold `probability > 0.5`.
+
+Older Matbench versions attempted to support both probabilities and labels, but
+thresholded the prediction array in place while iterating over the
+classification metrics. Because ROC-AUC was evaluated after the label-based
+metrics, it received the thresholded 0/1 labels instead of the original
+probabilities. This made stored ROC-AUC values label-based even when the result
+file retained enough information to compute standard score-based ROC-AUC.
+
+The historical migration audits all 27 submission-task records for
+`matbench_glass`, `matbench_expt_is_metal`, and `matbench_mp_is_metal`. Eleven
+records retained continuous probabilities and have been reproducibly rescored
+from the canonical validation splits and prediction IDs. They occur in the
+MODNet 0.1.10, MODNet 0.1.12, coGN, coNGN, DimeNet++, MegNet, and SchNet result
+files. The migration preserves every other stored metric and historical field,
+updates the result-file integrity hashes, and records per-fold scores, file
+hashes, ranks, and scorer provenance in the committed manifest.
+
+The remaining 16 records store boolean hard labels only. Their numeric
+ROC-AUC values are unchanged because the original ranking scores cannot be
+recovered. Leaderboards identify these as **hard boolean labels
+(label-based/degenerate ROC-AUC)**. For binary hard labels this AUC is
+equivalent to balanced accuracy, so it should not be interpreted as
+score-based ROC-AUC or as an additional discrete AUC metric.
+
 
 
 

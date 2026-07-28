@@ -36,10 +36,13 @@ for task in mb.tasks:
         # Get testing data
         test_inputs = task.get_test_data(fold, include_target=False)
         
-        # Predict on the testing data
-        # Your output should be a pandas series, numpy array, or python iterable
-        # where the array elements are floats or bools
-        predictions = my_model.predict(test_inputs)
+        # Predict on the testing data. Regression predictions are floats.
+        # Classification predictions must be a one-dimensional array of
+        # positive/True-class probabilities.
+        if task.metadata.task_type == "classification":
+            predictions = my_model.predict_proba(test_inputs)[:, 1]
+        else:
+            predictions = my_model.predict(test_inputs)
         
         # Record your data!
         task.record(fold, predictions)
@@ -53,6 +56,21 @@ mb.to_file("my_models_benchmark.json.gz")
 
 The output file, in this case `my_models_benchmark.json.gz` contains everything predicted by your 
 benchmark. **Keep this file, as it is the core result that will be submitted to the leaderboard.**
+
+For classification tasks, supply one positive/True-class probability per test
+sample. In particular, scikit-learn-style `predict_proba` output has two
+columns, so pass `predict_proba(test_inputs)[:, 1]`, not the full two-dimensional
+array. ROC-AUC is calculated from these original probabilities. Accuracy,
+balanced accuracy, and F1 are calculated from labels obtained with the strict
+threshold `probability > 0.5`; a probability of exactly `0.5` is therefore
+False. Non-one-dimensional classification inputs raise a `ValueError` rather
+than being flattened silently.
+
+Boolean hard-label predictions remain accepted for compatibility with
+historical submissions. Their ROC-AUC is label-based and degenerate: for binary
+labels it is equivalent to balanced accuracy and does not contain the ranking
+information of score-based ROC-AUC. New submissions should always retain and
+record positive-class probabilities.
 
 Please see the docs for [Submitting to leaderboard](3submit.md) to learn how to upload your data to the automated leaderboard.
 
@@ -114,7 +132,6 @@ my_metadata = {
 
 mb.add_metadata(my_metadata)
 ```
-
 
 
 

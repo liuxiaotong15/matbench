@@ -2,6 +2,7 @@ import copy
 import glob
 import json
 import logging
+import math
 import os
 import pprint
 from operator import gt, lt
@@ -44,6 +45,24 @@ SCALED_ERRORS_PATH = os.path.join(STATIC_DOCS_DIR, "scaled_errors_{bmark_name}.j
 SCALED_ERRORS_NON_GP_PATH = os.path.join(STATIC_DOCS_DIR, "scaled_errors_non_gp_{bmark_name}.json")
 
 pio.templates.default = "plotly_white"
+
+
+def classification_prediction_basis(task):
+    """Describe whether a classification result retained scores or labels."""
+    values = [
+        value
+        for fold in task.results.values()
+        for value in fold.data.values()
+    ]
+    if values and all(isinstance(value, (bool, np.bool_)) for value in values):
+        return "hard boolean labels (label-based/degenerate ROC-AUC)"
+    if values and all(
+        isinstance(value, (float, np.floating)) for value in values
+    ):
+        return "positive/True-class probabilities (score-based ROC-AUC)"
+    raise TypeError(
+        f"Could not determine prediction basis for {task.dataset_name}."
+    )
 
 
 def generate_scaled_errors_graph(gp_graph_data_by_bmark, output_fname=SCALED_ERRORS_PATH, title_txt="General purpose", title_subtext=""):
@@ -154,7 +173,7 @@ def generate_scaled_errors_graph(gp_graph_data_by_bmark, output_fname=SCALED_ERR
                               legend_font_size=14,
                               legend_title_font_size=14,
                               legend_title_text="Algorithm",
-                              yaxis_title="Scaled MAE (regression) or <br> (1-ROCAUC)/0.5 (classification)",
+                              yaxis_title="Scaled MAE (regression) or <br> (1-ROCAUC)/0.5 (classification; basis varies)",
                               xaxis_title="",
                               paper_bgcolor="rgba(0, 0, 0, 0)",
                               plot_bgcolor="rgba(0, 0, 0, 0)",
@@ -239,12 +258,13 @@ def generate_general_purpose_leaderboard_and_plot(gp_leaderboard_data_by_bmark, 
             "completeness": [d["completeness"] for d in gp_data.values()],
             "link": [d["link"] for d in gp_data.values()],
             "score": [d["score"] for d in gp_data.values()],
-            "type": [d["type"] for d in gp_data.values()]
+            "type": [d["type"] for d in gp_data.values()],
+            "prediction_basis": [d["prediction_basis"] for d in gp_data.values()]
         }
 
         df_src = pd.DataFrame(table_data).sort_values(by="n_samples")
         table_header = f"## Leaderboard-Property: General Purpose Algorithms on `{bmark}`\n\n"
-        table_explanation = f"Find more information about this benchmark on [the benchmark info page]({METADATA_DIR_PREFIX}{bmark}.md)\n\n"
+        table_explanation = f"Find more information about this benchmark on [the benchmark info page]({METADATA_DIR_PREFIX}{bmark}.md). Classification ROC-AUC is score-based when positive/True-class probabilities were retained and label-based/degenerate for historical hard-label-only submissions. Exact ties are broken by case-insensitive algorithm name, then result directory.\n\n"
         table = "| Task name | Samples | Algorithm | Verified MAE (unit) or ROCAUC | Notes |\n" \
                 "|------------------|---------|-----------|----------------------|-------|\n"
         # create leaderboard table
@@ -266,6 +286,11 @@ def generate_general_purpose_leaderboard_and_plot(gp_leaderboard_data_by_bmark, 
                 notes = ""
             else:
                 raise ValueError(f"{row['completeness']} is not a valid type of general purpose completeness!")
+
+            if row["type"] == CLF_KEY:
+                notes = "; ".join(
+                    note for note in (notes, row["prediction_basis"]) if note
+                )
 
             table += f"| {task_name_link} | {samples} | {algorithm} | {score} | {notes} |\n"
         table += "\n\n"
@@ -362,6 +387,7 @@ def generate_per_task_leaderboards(task_leaderboard_data_by_bmark):
                 table_data = {
                     "algorithm": [],
                     "algorithm w/ link": [],
+                    "prediction basis": [],
                     "mean rocauc": [],
                     "std rocauc": [],
                     "mean f1": [],
@@ -385,16 +411,23 @@ def generate_per_task_leaderboards(task_leaderboard_data_by_bmark):
                     table_data["mean rmse"].append(scores.rmse.mean)
                     table_data["max max_error"].append(scores.max_error.max)
                 else:
+                    table_data["prediction basis"].append(
+                        entry["prediction_basis"]
+                    )
                     table_data["mean rocauc"].append(scores.rocauc.mean)
                     table_data["std rocauc"].append(scores.rocauc.std)
                     table_data["mean f1"].append(scores.f1.mean)
                     table_data["mean balanced_accuracy"].append(scores.balanced_accuracy.mean)
 
-            df = pd.DataFrame(table_data)
-            df = df.set_index("algorithm")
             sorting_column = "mean rocauc" if task_type == CLF_KEY else "mean mae"
             sorting_order = True if task_type == REG_KEY else False
-            df = df.sort_values(by=sorting_column, ascending=sorting_order)
+            df = pd.DataFrame(table_data)
+            df = df.sort_values(
+                by=[sorting_column, "algorithm"],
+                ascending=[sorting_order, True],
+                kind="mergesort"
+            )
+            df = df.set_index("algorithm")
 
             mbt = MatbenchTask(task, autoload=False, benchmark=bmark_name)
 
@@ -405,6 +438,13 @@ def generate_per_task_leaderboards(task_leaderboard_data_by_bmark):
             explanation = "_Leaderboard for an individual task. Algorithms shown here may include " \
                           "both general purpose and specialized algorithms (i.e., algorithms which " \
                           "are only valid for a subset of tasks in the benchmark._\n\n"
+            if task_type == CLF_KEY:
+                explanation += (
+                    "Prediction basis distinguishes standard score-based "
+                    "ROC-AUC from historical hard-label-only results, whose "
+                    "label-based ROC-AUC is degenerate (equivalent to balanced "
+                    "accuracy for binary labels).\n\n"
+                )
 
 
 
@@ -428,6 +468,8 @@ def generate_per_task_leaderboards(task_leaderboard_data_by_bmark):
                 for th in column_headers:
                     if th == "algorithm w/ link":
                         table += f"{row[th]} | "
+                    elif th == "prediction basis":
+                        table += f"{row[th]} | "
                     else:
                         number = format_float(row[th])
                         if th == sorting_column:
@@ -440,7 +482,10 @@ def generate_per_task_leaderboards(task_leaderboard_data_by_bmark):
 
 
             droppables = ["mean f1", "mean balanced_accuracy"] if task_type == CLF_KEY else ["mean rmse", "max max_error"]
-            df = df.drop(columns=["algorithm w/ link"] + droppables)
+            non_plot_columns = ["algorithm w/ link"]
+            if task_type == CLF_KEY:
+                non_plot_columns.append("prediction basis")
+            df = df.drop(columns=non_plot_columns + droppables)
             error_metric = "std rocauc" if task_type == CLF_KEY else "std mae"
             fig = px.scatter(df, error_y=error_metric, log_y=True)
 
@@ -523,7 +568,9 @@ def organize_task_data(all_data):
             "type": None,
             "link": None,
             "algorithm": None,
-            "completeness": None
+            "completeness": None,
+            "prediction_basis": None,
+            "tie_break_key": None
         } for t in metadata.keys()}
 
         task_leaderboards = {t: [] for t in metadata.keys()}
@@ -547,6 +594,7 @@ def organize_task_data(all_data):
                     op = lt
                 elif task.metadata.task_type == CLF_KEY:
                     score = task.scores.rocauc.mean
+                    prediction_basis = classification_prediction_basis(task)
 
                     # Better classification tasks have higher mean rocauc
                     op = gt
@@ -563,11 +611,41 @@ def organize_task_data(all_data):
                     gp_graph_data[task_name][info["algorithm"]] = score
 
                     # this task's score is better or it is the first so far
-                    if current_best_score is None or op(score, current_best_score):
+                    candidate_tie_break_key = (
+                        info["algorithm"].casefold(),
+                        dir_name_short
+                    )
+                    scores_tied = (
+                        current_best_score is not None
+                        and math.isclose(
+                            score,
+                            current_best_score,
+                            rel_tol=0.0,
+                            abs_tol=1e-15
+                        )
+                    )
+                    wins_tie_break = (
+                        scores_tied
+                        and candidate_tie_break_key
+                        < gp_leaderboard[task_name]["tie_break_key"]
+                    )
+                    if (
+                        current_best_score is None
+                        or op(score, current_best_score)
+                        or wins_tie_break
+                    ):
                         gp_leaderboard[task_name]["score"] = score
                         gp_leaderboard[task_name]["link"] = prefix + dir_name_short
                         gp_leaderboard[task_name]["algorithm"] = info["algorithm"]
                         gp_leaderboard[task_name]["type"] = task.metadata.task_type
+                        gp_leaderboard[task_name]["prediction_basis"] = (
+                            prediction_basis
+                            if task.metadata.task_type == CLF_KEY
+                            else None
+                        )
+                        gp_leaderboard[task_name]["tie_break_key"] = (
+                            candidate_tie_break_key
+                        )
 
                         if mb.is_complete or mb.is_regression_complete:
                             gp_leaderboard[task_name]["completeness"] = "all"
@@ -585,7 +663,12 @@ def organize_task_data(all_data):
                     "scores": task.scores,
                     "link": prefix + dir_name_short + ".md",
                     "algorithm": info["algorithm"],
-                    "type": task.metadata.task_type
+                    "type": task.metadata.task_type,
+                    "prediction_basis": (
+                        prediction_basis
+                        if task.metadata.task_type == CLF_KEY
+                        else None
+                    )
                 })
 
             gp_leaderboard_data_by_bmark[bmark_name] = gp_leaderboard
@@ -732,6 +815,13 @@ def generate_info_page(mb: MatbenchBenchmark, info: dict, dir_name_short: str):
     data_txt = ""
     for task in mb.tasks:
         task_header = f"#### `{task.dataset_name}`\n\n"
+        prediction_basis = ""
+        if task.metadata.task_type == CLF_KEY:
+            prediction_basis = (
+                f"Prediction basis: **{classification_prediction_basis(task)}**. "
+                "Accuracy, balanced accuracy, and F1 use a strict > 0.5 "
+                "threshold; ROC-AUC uses the stored prediction basis.\n\n"
+            )
 
         fold_data_header = f"###### Fold scores\n\n"
 
@@ -773,7 +863,7 @@ def generate_info_page(mb: MatbenchBenchmark, info: dict, dir_name_short: str):
 
         params_table += "\n\n"
 
-        task_section = task_header + fold_data_header + fold_table + fold_dist_header + dist_table + params_header + params_table + "\n\n"
+        task_section = task_header + prediction_basis + fold_data_header + fold_table + fold_dist_header + dist_table + params_header + params_table + "\n\n"
         data_txt += task_section
 
     final_txt = header + desc + refs + user_metadata + metadata_header + requirements_header + requirements_body + all_tasks_header + data_txt
@@ -938,7 +1028,7 @@ if __name__ == "__main__":
     # Get all benchmark data loaded into memory
     # If throws an error trying to obtain any of this data,
     # Should abort the whole docs build
-    for d in os.listdir(BENCHMARKS_DIR):
+    for d in sorted(os.listdir(BENCHMARKS_DIR)):
         if d not in [".DS_Store", ".ipynb_checkpoints"]:
             print(d)
             d_path = os.path.join(BENCHMARKS_DIR, d)
