@@ -1,0 +1,51 @@
+name: probability-rocauc-review
+
+on:
+  push:
+    branches: [fix/probability-rocauc-leaderboards]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install and test
+        run: |
+          pip install -e . -r requirements-docs.txt
+          python -m unittest matbench.tests.test_leaderboard matbench.tests.test_submission_validation scripts.test_rebuild_docs
+      - name: Verify canonical experimental metallicity data
+        run: |
+          python - <<'PY'
+          import hashlib
+          import pathlib
+          import shutil
+          import matminer
+          from matminer.datasets import load_dataset
+          from matminer.datasets.utils import _load_dataset_dict
+          name = "matbench_expt_is_metal"
+          load_dataset(name)
+          source = pathlib.Path(matminer.__file__).parent / "datasets" / (name + ".json.gz")
+          assert hashlib.sha256(source.read_bytes()).hexdigest() == _load_dataset_dict()[name]["hash"]
+          pathlib.Path("review_data").mkdir()
+          shutil.copyfile(source, pathlib.Path("review_data") / source.name)
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: verified-experimental-metallicity-data
+          path: review_data
+          retention-days: 7
+      - name: Rebuild full site
+        run: |
+          python scripts/rebuild_docs.py
+          mkdocs build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: probability-rocauc-site-review
+          path: docs
+          retention-days: 7
