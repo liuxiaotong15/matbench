@@ -9,9 +9,7 @@ from pathlib import Path
 import numpy as np
 
 HERE=Path(__file__).resolve().parent
-for parent in HERE.parents:
-    if (parent/'matbench/__init__.py').is_file():
-        sys.path.insert(0,str(parent));break
+# Use the installed, pinned Matbench SDK; the surrounding checkout may differ.
 
 DATA_SHA='473bc4957b2ea5e6465aef84bc29bb48ac34db27d69ea4ec5f508745c6fae252'
 WEIGHT_SHA='2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736'
